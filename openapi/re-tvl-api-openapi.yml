@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: Re Protocol General TVL API
+  version: '1.0'
+  description: Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.
+  contact:
+    name: Re Protocol
+    url: https://docs.re.xyz/products/api-reference
+  x-generated-by: api-evangelist-enrichment
+  x-source: https://docs.re.xyz/products/api-reference.md
+servers:
+- url: https://api.re.xyz
+  description: Production
+tags:
+- name: TVL
+  description: Total value locked and capital metrics
+paths:
+  /tvl:
+    get:
+      tags:
+      - TVL
+      operationId: getTvl
+      summary: Latest values of every TVL metric
+      description: Latest values of every protocol capital/TVL metric.
+      responses:
+        '200':
+          description: Latest values of every metric.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TvlResponse'
+  /tvl/{metric}:
+    get:
+      tags:
+      - TVL
+      operationId: getTvlMetric
+      summary: Latest value of one TVL metric
+      description: 'Latest value of one metric: reusd, reusde, total, onchain_capital, offchain_capital, or premium-receivables.'
+      parameters:
+      - $ref: '#/components/parameters/MetricPath'
+      responses:
+        '200':
+          description: Latest value of one metric.
+          content:
+            application/json:
+              schema:
+                type: object
+  /tvl/{metric}/history:
+    get:
+      tags:
+      - TVL
+      operationId: getTvlMetricHistory
+      summary: Daily history of one TVL metric
+      description: Daily history of one metric.
+      parameters:
+      - $ref: '#/components/parameters/MetricPath'
+      - $ref: '#/components/parameters/Period'
+      responses:
+        '200':
+          description: Daily history of one metric.
+          content:
+            application/json:
+              schema:
+                type: object
+  /tvl/history:
+    get:
+      tags:
+      - TVL
+      operationId: getTvlHistory
+      summary: Historical values of every TVL metric
+      description: Historical values of every metric.
+      responses:
+        '200':
+          description: Historical values of every metric.
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  parameters:
+    MetricPath:
+      name: metric
+      in: path
+      required: true
+      description: Capital/TVL metric key.
+      schema:
+        type: string
+        enum:
+        - reusd
+        - reusde
+        - total
+        - onchain_capital
+        - offchain_capital
+        - premium-receivables
+    Period:
+      name: period
+      in: query
+      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
+      schema:
+        type: string
+        default: 7d
+  schemas:
+    MetricValue:
+      type: object
+      properties:
+        amount:
+          type: number
+        lastUpdated:
+          type: string
+          format: date-time
+        currency:
+          type: string
+    TvlResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        results:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MetricValue'
+        timestamp:
+          type: string
+          format: date-time

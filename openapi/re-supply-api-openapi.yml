@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: Re Protocol General Supply API
+  version: '1.0'
+  description: Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.
+  contact:
+    name: Re Protocol
+    url: https://docs.re.xyz/products/api-reference
+  x-generated-by: api-evangelist-enrichment
+  x-source: https://docs.re.xyz/products/api-reference.md
+servers:
+- url: https://api.re.xyz
+  description: Production
+tags:
+- name: Supply
+  description: Token supply metrics
+paths:
+  /supply:
+    get:
+      tags:
+      - Supply
+      operationId: getSupply
+      summary: Supply for both tokens
+      description: Full supply data for both reUSD and reUSDe.
+      responses:
+        '200':
+          description: Supply data for both tokens.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplyResponse'
+  /supply/{token}:
+    get:
+      tags:
+      - Supply
+      operationId: getSupplyForToken
+      summary: Supply for one token
+      description: Supply data for a single token (reusd or reusde, case-insensitive).
+      parameters:
+      - $ref: '#/components/parameters/TokenPath'
+      responses:
+        '200':
+          description: Supply data for one token.
+          content:
+            application/json:
+              schema:
+                type: object
+  /supply/{token}/total_supply:
+    get:
+      tags:
+      - Supply
+      operationId: getTokenTotalSupply
+      summary: Total supply of a token
+      description: Total supply across all chains for a token.
+      parameters:
+      - $ref: '#/components/parameters/TokenPath'
+      responses:
+        '200':
+          description: Total supply across all chains.
+          content:
+            application/json:
+              schema:
+                type: object
+  /supply/{token}/circulating:
+    get:
+      tags:
+      - Supply
+      operationId: getTokenCirculatingSupply
+      summary: Circulating supply of a token
+      description: Circulating supply of a token.
+      parameters:
+      - $ref: '#/components/parameters/TokenPath'
+      responses:
+        '200':
+          description: Circulating supply.
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    TokenSupply:
+      type: object
+      properties:
+        totalSupply:
+          type: string
+        circulating:
+          type: string
+    SupplyResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        results:
+          type: object
+          properties:
+            reUSD:
+              $ref: '#/components/schemas/TokenSupply'
+            reUSDe:
+              $ref: '#/components/schemas/TokenSupply'
+        timestamp:
+          type: string
+          format: date-time
+  parameters:
+    TokenPath:
+      name: token
+      in: path
+      required: true
+      description: Token symbol (reusd or reusde, case-insensitive).
+      schema:
+        type: string
+        enum:
+        - reusd
+        - reusde

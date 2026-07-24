@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  title: Re Protocol General Points API
+  version: '1.0'
+  description: Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.
+  contact:
+    name: Re Protocol
+    url: https://docs.re.xyz/products/api-reference
+  x-generated-by: api-evangelist-enrichment
+  x-source: https://docs.re.xyz/products/api-reference.md
+servers:
+- url: https://api.re.xyz
+  description: Production
+tags:
+- name: Points
+  description: Re Points leaderboard and opportunities
+paths:
+  /points/public/leaderboard:
+    get:
+      tags:
+      - Points
+      operationId: getPointsLeaderboard
+      summary: Public Re Points leaderboard
+      description: Public Re Points leaderboard.
+      parameters:
+      - name: limit
+        in: query
+        description: Number of rows to return (1-100).
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 100
+      - name: offset
+        in: query
+        description: Row offset for pagination.
+        schema:
+          type: integer
+          default: 0
+      - name: season
+        in: query
+        description: Points season. Defaults to current season.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Leaderboard rows.
+          content:
+            application/json:
+              schema:
+                type: object
+  /points/public/opportunities:
+    get:
+      tags:
+      - Points
+      operationId: getPointsOpportunities
+      summary: Live earning opportunities
+      description: Live earning opportunities with boost multipliers.
+      responses:
+        '200':
+          description: Earning opportunities.
+          content:
+            application/json:
+              schema:
+                type: object

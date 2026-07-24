@@ -1,0 +1,107 @@
+openapi: 3.0.3
+info:
+  title: Re Protocol General API
+  version: '1.0'
+  description: Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.
+  contact:
+    name: Re Protocol
+    url: https://docs.re.xyz/products/api-reference
+  x-generated-by: api-evangelist-enrichment
+  x-source: https://docs.re.xyz/products/api-reference.md
+servers:
+- url: https://api.re.xyz
+  description: Production
+tags:
+- name: General
+  description: Health, APY, NAV, and price series
+paths:
+  /health:
+    get:
+      tags:
+      - General
+      operationId: getHealth
+      summary: Health check
+      description: Health check endpoint. Returns the same payload as `/apy`.
+      responses:
+        '200':
+          description: Service is healthy; current APY/NAV payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApyResponse'
+  /apy:
+    get:
+      tags:
+      - General
+      operationId: getApy
+      summary: Current APY and NAV
+      description: Current APY and NAV for both tokens over a rolling window.
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/Tokens'
+      responses:
+        '200':
+          description: Current APY and NAV.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApyResponse'
+  /price:
+    get:
+      tags:
+      - General
+      operationId: getPrice
+      summary: Historical price and APY series
+      description: Full historical daily price and APY series since inception.
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/Tokens'
+      responses:
+        '200':
+          description: Historical daily price and APY series.
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    ApyResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            reUSD:
+              $ref: '#/components/schemas/TokenApy'
+            reUSDe:
+              $ref: '#/components/schemas/TokenApy'
+        timestamp:
+          type: string
+          format: date-time
+    TokenApy:
+      type: object
+      properties:
+        apy:
+          type: number
+        currentNAV:
+          type: string
+        pastNAV:
+          type: string
+        period:
+          type: string
+  parameters:
+    Tokens:
+      name: tokens
+      in: query
+      description: Which tokens to include (reUSD/reUSDe). Defaults to both.
+      schema:
+        type: string
+    Period:
+      name: period
+      in: query
+      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
+      schema:
+        type: string
+        default: 7d

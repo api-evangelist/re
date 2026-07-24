@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: Re Protocol General Wallet API
+  version: '1.0'
+  description: Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.
+  contact:
+    name: Re Protocol
+    url: https://docs.re.xyz/products/api-reference
+  x-generated-by: api-evangelist-enrichment
+  x-source: https://docs.re.xyz/products/api-reference.md
+servers:
+- url: https://api.re.xyz
+  description: Production
+tags:
+- name: Wallet
+  description: Per-wallet balances and points
+paths:
+  /wallet/balance:
+    get:
+      tags:
+      - Wallet
+      operationId: getWalletBalance
+      summary: Wallet token balances
+      description: A wallet's reUSD and reUSDe holdings across chains.
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The wallet address to query.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Tokens'
+      responses:
+        '200':
+          description: Wallet balances across chains.
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet/points:
+    get:
+      tags:
+      - Wallet
+      operationId: getWalletPoints
+      summary: Wallet points and rank
+      description: A wallet's accumulated points and leaderboard position.
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The wallet address to query.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Wallet points and rank.
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  parameters:
+    Tokens:
+      name: tokens
+      in: query
+      description: Which tokens to include (reUSD/reUSDe). Defaults to both.
+      schema:
+        type: string
