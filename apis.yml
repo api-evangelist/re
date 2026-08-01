@@ -1,8 +1,18 @@
 aid: re
 name: Re
-description: 'Re is a company surfaced as a portfolio company of electric-capital and added to the API
-  Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Re (Re Protocol) is an onchain reinsurance platform that channels stablecoin
+  capital into fully collateralized, regulated reinsurance contracts. It issues
+  two yield-bearing tokens — reUSD, the senior tranche, and reUSDe, the
+  mezzanine tranche — backed by real reinsurance premiums from a diversified book
+  (homeowners, commercial and personal auto, small business, and workers
+  compensation). Re describes itself as "the internet capital market for
+  insurance risk," giving onchain participants access to the ~$800B global
+  reinsurance market with onchain attestations, audits, and a transparent loss
+  waterfall. Re operates a public, read-only HTTP API (https://api.re.xyz)
+  serving APY/NAV, price history, token supply, protocol TVL, the Re Points
+  leaderboard, and per-wallet data, plus a hosted MCP server that exposes the
+  same data to AI agents. Backed by Electric Capital.
 url: https://raw.githubusercontent.com/api-evangelist/re/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,13 +20,109 @@ x-backed-by:
 - electric-capital
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://re.xyz/favicon.ico
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Fintech
-apis: []
+- Reinsurance
+- Insurance
+- DeFi
+- Blockchain
+- Real World Assets
+- Stablecoin
+- Yield
+- Onchain
+apis:
+- aid: re:re-general-api
+  name: Re General API
+  description: Health, APY, NAV, and price series
+  humanURL: https://docs.re.xyz/products/api-reference
+  baseURL: https://api.re.xyz
+  tags:
+  - General
+  properties:
+  - type: OpenAPI
+    url: openapi/re-general-api-openapi.yml
+  - type: Examples
+    url: examples/re-examples.yml
+  - type: Documentation
+    url: https://docs.re.xyz/products/api-reference
+- aid: re:re-points-api
+  name: Re Points API
+  description: Re Points leaderboard and opportunities
+  humanURL: https://docs.re.xyz/products/api-reference
+  baseURL: https://api.re.xyz
+  tags:
+  - Points
+  properties:
+  - type: OpenAPI
+    url: openapi/re-points-api-openapi.yml
+  - type: Examples
+    url: examples/re-examples.yml
+  - type: Documentation
+    url: https://docs.re.xyz/products/api-reference
+- aid: re:re-supply-api
+  name: Re Supply API
+  description: Token supply metrics
+  humanURL: https://docs.re.xyz/products/api-reference
+  baseURL: https://api.re.xyz
+  tags:
+  - Supply
+  properties:
+  - type: OpenAPI
+    url: openapi/re-supply-api-openapi.yml
+  - type: Examples
+    url: examples/re-examples.yml
+  - type: Documentation
+    url: https://docs.re.xyz/products/api-reference
+- aid: re:re-tvl-api
+  name: Re TVL API
+  description: Total value locked and capital metrics
+  humanURL: https://docs.re.xyz/products/api-reference
+  baseURL: https://api.re.xyz
+  tags:
+  - TVL
+  properties:
+  - type: OpenAPI
+    url: openapi/re-tvl-api-openapi.yml
+  - type: Examples
+    url: examples/re-examples.yml
+  - type: Documentation
+    url: https://docs.re.xyz/products/api-reference
+- aid: re:re-wallet-api
+  name: Re Wallet API
+  description: Per-wallet balances and points
+  humanURL: https://docs.re.xyz/products/api-reference
+  baseURL: https://api.re.xyz
+  tags:
+  - Wallet
+  properties:
+  - type: OpenAPI
+    url: openapi/re-wallet-api-openapi.yml
+  - type: Examples
+    url: examples/re-examples.yml
+  - type: Documentation
+    url: https://docs.re.xyz/products/api-reference
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +131,49 @@ maintainers:
 common:
 - type: Website
   url: https://re.xyz/
+- type: DeveloperPortal
+  url: https://docs.re.xyz
+- type: Documentation
+  url: https://docs.re.xyz
+- type: APIReference
+  url: https://docs.re.xyz/products/api-reference
+- type: GettingStarted
+  url: https://docs.re.xyz/getting-started-with-re/readme.md
+- type: Authentication
+  url: authentication/re-authentication.yml
+- type: MCPServer
+  url: mcp/re-mcp.yml
+- type: LLMsTxt
+  url: llms/re-llms.txt
+- type: WellKnown
+  url: well-known/re-well-known.yml
+- type: DomainSecurity
+  url: security/re-domain-security.yml
+- type: Conventions
+  url: conventions/re-conventions.yml
+- type: ErrorCatalog
+  url: errors/re-problem-types.yml
+- type: DataModel
+  url: data-model/re-data-model.yml
+- type: Conformance
+  url: conformance/re-conformance.yml
+- type: Lifecycle
+  url: lifecycle/re-lifecycle.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Support
+  url: https://discord.gg/reprotocol
+- type: TermsOfService
+  url: https://re.xyz/terms
+- type: PrivacyPolicy
+  url: https://re.xyz/privacy
+- type: SignUp
+  url: https://app.re.xyz
+- type: Twitter
+  url: https://x.com/re
+- type: Discord
+  url: https://discord.gg/reprotocol
+- type: Telegram
+  url: https://t.me/re_protocol
+- type: LinkedIn
+  url: https://linkedin.com/company/re-protocol

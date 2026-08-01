@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/re-openapi.yml
+format: json-envelope
+description: >-
+  The Re Protocol API does not use RFC 9457 problem+json. Errors are signalled
+  on the standard response envelope with success:false, and unknown path
+  segments (token/metric) or missing required query params return HTTP 4xx.
+  This catalog is derived from the documented API surface; the docs publish no
+  dedicated error-code reference.
+envelope_field: success
+problems:
+  - status: 400
+    title: Missing required parameter
+    detail: >-
+      A required query parameter was omitted (e.g. `address` on /wallet/balance
+      or /wallet/points).
+    source_operations:
+      - openapi/re-openapi.yml#getWalletBalance
+      - openapi/re-openapi.yml#getWalletPoints
+  - status: 404
+    title: Unknown resource
+    detail: >-
+      The path token (reusd/reusde) or TVL metric segment did not match a known
+      value.
+    source_operations:
+      - openapi/re-openapi.yml#getSupplyForToken
+      - openapi/re-openapi.yml#getTvlMetric

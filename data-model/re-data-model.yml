@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/re-openapi.yml
+description: >-
+  Entity graph derived from the Re Protocol API surface. Re issues two yield
+  tokens (senior/mezzanine tranches) whose supply, NAV, APY, and price series
+  are served alongside protocol capital (TVL) metrics, a Re Points program, and
+  per-wallet views.
+entities:
+  - name: Token
+    description: A Re yield token — reUSD (senior tranche) or reUSDe (mezzanine tranche).
+    identifiers: [reUSD, reUSDe]
+    fields: [apy, currentNAV, pastNAV, totalSupply, circulating]
+  - name: TvlMetric
+    description: A protocol capital / total-value-locked metric.
+    identifiers:
+      - reusd
+      - reusde
+      - total
+      - onchain_capital
+      - offchain_capital
+      - premium-receivables
+      - supported-premiums
+    fields: [amount, lastUpdated, currency]
+  - name: PointsSeason
+    description: A Re Points season with a public leaderboard and earning opportunities.
+    fields: [season, leaderboard, opportunities]
+  - name: Wallet
+    description: An onchain address holding Re tokens and accruing points.
+    fields: [address, balance, points, rank]
+relationships:
+  - from: Wallet
+    to: Token
+    type: has_many
+    via: balance
+  - from: Wallet
+    to: PointsSeason
+    type: belongs_to
+    via: leaderboard
+  - from: TvlMetric
+    to: Token
+    type: belongs_to
+    via: metric-key (reusd/reusde map to their token)

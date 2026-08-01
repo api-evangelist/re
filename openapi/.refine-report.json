@@ -1,0 +1,22 @@
+{
+  "provider": "re",
+  "sources": [
+    "re-general-api-openapi.yml",
+    "re-points-api-openapi.yml",
+    "re-supply-api-openapi.yml",
+    "re-tvl-api-openapi.yml",
+    "re-wallet-api-openapi.yml"
+  ],
+  "outputs": [
+    "re-general-api-openapi.yml",
+    "re-points-api-openapi.yml",
+    "re-supply-api-openapi.yml",
+    "re-tvl-api-openapi.yml",
+    "re-wallet-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

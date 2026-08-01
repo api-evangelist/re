@@ -1,0 +1,18 @@
+generated: '2026-07-20'
+method: searched
+description: >-
+  Probe of /.well-known/ discovery surface for the Re Protocol API and website
+  hosts. No documents were served (all 404). Absence is valid recorded data.
+hosts:
+  - host: https://api.re.xyz
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+  - host: https://re.xyz
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://docs.re.xyz
+    documents:
+      - {path: /.well-known/security.txt, status: 404}

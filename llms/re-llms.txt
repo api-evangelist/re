@@ -1,0 +1,52 @@
+# Re Protocol Docs
+
+## New Docs
+
+- [What Re is](https://docs.re.xyz/getting-started-with-re/readme.md)
+- [How Re works](https://docs.re.xyz/getting-started-with-re/how-re-works.md)
+- [What reinsurance is](https://docs.re.xyz/getting-started-with-re/what-reinsurance-is.md)
+- [Re's products](https://docs.re.xyz/getting-started-with-re/res-products.md)
+- [The Re App](https://docs.re.xyz/getting-started-with-re/the-re-app.md)
+- [Official links](https://docs.re.xyz/getting-started-with-re/official-links.md): Links to Re platforms and data.
+- [Connect with us](https://docs.re.xyz/getting-started-with-re/connect-with-us.md)
+- [FAQ](https://docs.re.xyz/getting-started-with-re/faq.md)
+- [Re and Cover Re](https://docs.re.xyz/getting-started-with-re/re-and-cover-re.md): The difference between the Re Protocol and Cover Re SPC Ltd.
+- [Governance](https://docs.re.xyz/governance-and-tokenomics/re-governance.md): About $RE, the protocol's governance token.
+- [$RE Tokenomics](https://docs.re.xyz/governance-and-tokenomics/re-tokenomics.md): About $RE, the protocol's governance token.
+- [About Re Points](https://docs.re.xyz/re-points-season-one/about-re-points.md)
+- [Claims](https://docs.re.xyz/re-points-season-one/claims.md): About Re Points Season One claims
+- [Vesting + TVL requirements](https://docs.re.xyz/re-points-season-one/vesting-+-tvl-requirements.md): About RE vesting schedules
+- [Reinsurance 101](https://docs.re.xyz/how-reinsurance-works/reinsurance-101.md): A basic primer on reinsurance for newbies.
+- [Deal types as payoff shapes](https://docs.re.xyz/how-reinsurance-works/deal-types-as-payoff-shapes.md): The various types of reinsurance treaties and how they function.
+- [Underwriting, reserving, and timing](https://docs.re.xyz/how-reinsurance-works/underwriting-reserving-and-timing.md)
+- [About reUSD](https://docs.re.xyz/products/about-reusd.md): About reUSD, Re's senior tranche token.
+- [About reUSDe](https://docs.re.xyz/products/about-reusde.md): About reUSDe, Re's mezzanine tranche token.
+- [Comparing reUSD/reUSDe](https://docs.re.xyz/products/comparing-reusd-reusde.md): A comprehensive comparison of reUSD and reUSDe.
+- [Risks](https://docs.re.xyz/products/risks.md): The three material risks stakers face, and how Re mitigates them.
+- [Smart contracts](https://docs.re.xyz/products/smart-contracts.md)
+- [API reference](https://docs.re.xyz/products/api-reference.md)
+- [MCP Server](https://docs.re.xyz/products/mcp-server.md)
+- [Price vs. NAV](https://docs.re.xyz/trading-and-pricing-defi-native-core/price-vs.-nav.md): Market price versus token NAV, and why they may diverge.
+- [Buying below NAV](https://docs.re.xyz/trading-and-pricing-defi-native-core/buying-below-nav.md): How to model implied IRR when reUSDe trades at a discount to tNAV.
+- [Liquidity venues](https://docs.re.xyz/trading-and-pricing-defi-native-core/liquidity-venues.md): How to buy and sell reUSD and reUSDe on the secondary markets.
+- [Using reUSD/reUSDe as collateral](https://docs.re.xyz/trading-and-pricing-defi-native-core/using-reusd-reusde-as-collateral.md): A technical guide for lending market curators on oracle selection, liquidation dynamics, and parameter-setting when using reUSD or reUSDe as collateral.
+- [Minting](https://docs.re.xyz/minting-and-redemptions/minting.md): How to mint reUSD and reUSDe.
+- [Redemptions](https://docs.re.xyz/minting-and-redemptions/redemptions.md): How to redeem reUSD and reUSDe.
+- [Q3 reUSDe Redemptions](https://docs.re.xyz/minting-and-redemptions/q3-reusde-redemptions.md)
+- [Loss waterfall order](https://docs.re.xyz/capital-stack-and-loss-waterfall/loss-waterfall-order.md): How losses flow through Re's capital structure.
+- [Scenario walkthroughs](https://docs.re.xyz/capital-stack-and-loss-waterfall/scenario-walkthroughs.md)
+- [Interactive waterfall simulator](https://docs.re.xyz/capital-stack-and-loss-waterfall/interactive-waterfall-simulator.md): An interactive loss waterfall simulator.
+- [Risk overview](https://docs.re.xyz/risk-controls-and-what-can-go-wrong/risk-overview.md): Potential avenues to underwriting loss.
+- [Risk limits & controls](https://docs.re.xyz/risk-controls-and-what-can-go-wrong/risk-limits-and-controls.md): How Cover Re limits risk factors.
+- [Stress tests](https://docs.re.xyz/risk-controls-and-what-can-go-wrong/stress-tests.md): About Re's stress tests.
+- [Risk register](https://docs.re.xyz/risk-controls-and-what-can-go-wrong/risk-register.md): About Cover Re's risk register.
+- [Dashboard overview](https://docs.re.xyz/transparency-and-data-show-me-the-receipts/dashboard-overview.md): About the Re App
+- [How to read the dashboard](https://docs.re.xyz/transparency-and-data-show-me-the-receipts/how-to-read-the-dashboard.md)
+- [Oracles](https://docs.re.xyz/transparency-and-data-show-me-the-receipts/oracles.md)
+- [Audits / attestations / custody structure](https://docs.re.xyz/transparency-and-data-show-me-the-receipts/audits-attestations-custody-structure.md)
+- [Resource library](https://docs.re.xyz/learn-reinsurance/resource-library.md): Helpful resources for learning about reinsurance and RWAs.
+- [Discord support](https://docs.re.xyz/learn-reinsurance/discord-support.md): Reach out for assistance.
+- [Glossary (DeFi-translated)](https://docs.re.xyz/glossary-and-reference/glossary-defi-translated.md): This document references and defines prominent reinsurance and DeFi terms found elsewhere throughout the docs¹ .
+- [Key metrics definitions](https://docs.re.xyz/glossary-and-reference/key-metrics-definitions.md)
+- [Legal](https://docs.re.xyz/glossary-and-reference/legal-structure.md): Legal documentation.
+- [Disclosures](https://docs.re.xyz/glossary-and-reference/disclosures.md): Legal disclosures.

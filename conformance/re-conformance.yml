@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/re-openapi.yml
+description: >-
+  Cross-cutting standards conformance for the Re Protocol API, derived from the
+  documented surface and live inspection. This is a derive-only assertion of
+  technical conformance; it does not assert a published compliance program.
+standards:
+  - id: openapi3
+    conforms: true
+    evidence: OpenAPI 3.0.3 description generated from the published API reference.
+  - id: rest-json
+    conforms: true
+    evidence: All endpoints are HTTP GET returning JSON.
+  - id: oauth2
+    conforms: false
+    evidence: No authentication; public read-only API.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a success:false envelope, not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: limit/offset pagination on the points leaderboard.
+  - id: idempotency
+    conforms: false
+    evidence: Read-only surface; no idempotency-key contract.

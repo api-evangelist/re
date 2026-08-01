@@ -1,0 +1,11 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.re.xyz/products/api-reference
+docs: https://docs.re.xyz/products/api-reference
+summary:
+  types: [none]
+  note: >-
+    The Re Protocol API is fully public and read-only. The documented API
+    reference states verbatim "No authentication is required." No API keys,
+    OAuth, or bearer tokens are needed; there are no securitySchemes to derive.
+schemes: []

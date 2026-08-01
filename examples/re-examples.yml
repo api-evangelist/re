@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.re.xyz
+description: >-
+  Live example responses captured from the public Re Protocol API on
+  2026-07-21. Values are real point-in-time data returned by the API.
+examples:
+  - operation: getApy
+    request: GET https://api.re.xyz/apy
+    response:
+      success: true
+      data:
+        reUSD:
+          apy: 6.18
+          currentNAV: '1.090204470462530304'
+          pastNAV: '1.088913318159192192'
+          period: 7d
+        reUSDe:
+          apy: 12.22
+          currentNAV: '1.390955297838437120'
+          pastNAV: '1.387701916260108800'
+          period: 7d
+      timestamp: '2026-07-21T03:49:59.894Z'
+  - operation: getSupply
+    request: GET https://api.re.xyz/supply
+    response:
+      success: true
+      results:
+        reUSD:
+          totalSupply: '146710219.853850230652665362'
+          circulating: '146710219.853850230652665362'
+        reUSDe:
+          totalSupply: '14469723.656554896686286540'
+          circulating: '14469723.656554896686286540'
+      timestamp: '2026-07-21T03:50:00.361Z'
+  - operation: getTvl
+    request: GET https://api.re.xyz/tvl
+    response:
+      success: true
+      results:
+        reusd: {amount: 161294003.07971117, lastUpdated: '2026-07-21T00:00:00.000Z', currency: USD}
+        reusde: {amount: 20133470.6094007, lastUpdated: '2026-07-21T00:00:00.000Z', currency: USD}
+        total: {amount: 568790785.4559308, lastUpdated: '2026-07-21T00:00:00.000Z', currency: USD}
+        onchain_capital: {amount: 70744568.640043, lastUpdated: '2026-07-21T00:00:00.000Z', currency: USD}
+        offchain_capital: {amount: 179120258.33588776, lastUpdated: '2026-07-21T00:00:00.000Z', currency: USD}
+        premium-receivables: {amount: 318925958.48, lastUpdated: '2026-07-21T00:00:00.000Z', currency: USD}
+        supported-premiums: {amount: 0, lastUpdated: '2026-07-21T00:00:00.000Z', currency: USD}
+      timestamp: '2026-07-21T03:50:18.514Z'

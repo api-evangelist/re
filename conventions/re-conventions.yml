@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.re.xyz/products/api-reference
+description: >-
+  Cross-cutting request/response semantics for the Re Protocol API, derived from
+  the documented API reference and live response inspection (2026-07-21).
+authentication:
+  style: none
+  detail: Public read-only API; no authentication required.
+response_envelope:
+  shape: |
+    { "success": <bool>, "data" | "results": <payload>, "timestamp": <ISO-8601 UTC> }
+  success_field: success
+  data_fields: [data, results]
+  timestamp_field: timestamp
+  timestamps: UTC (ISO-8601)
+  monetary_units: USD unless otherwise noted
+  numeric_precision: >-
+    Token supplies and NAV values are returned as decimal strings at full
+    (18-decimal) onchain precision to avoid float rounding; TVL/APY values are
+    returned as JSON numbers.
+pagination:
+  style: limit-offset
+  applies_to: [getPointsLeaderboard]
+  params:
+    limit: {min: 1, max: 100, default: 100}
+    offset: {default: 0}
+idempotency:
+  supported: false
+  reason: >-
+    All operations are HTTP GET (read-only). There is no state-changing surface,
+    so no idempotency-key contract applies.
+versioning:
+  scheme: none-documented
+  detail: No API version prefix or version header is documented; base path is unversioned.
+rate_limiting:
+  documented: false
+error_handling:
+  envelope: success:false on the standard envelope; HTTP 404 for unknown token/metric path segments.
+  see: errors/re-problem-types.yml
+cross_links:
+  authentication: authentication/re-authentication.yml
+  errors: errors/re-problem-types.yml
+  data_model: data-model/re-data-model.yml

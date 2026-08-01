@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.re.xyz/products/mcp-server
+server:
+  name: re-protocol
+  transport: http
+  url: https://api.re.xyz/mcp
+  authentication: none
+description: >-
+  Official hosted Re Protocol MCP server. Exposes all data served by the public
+  Re Protocol API (https://api.re.xyz) as MCP tools. Installable in Claude Code,
+  Gemini CLI, Codex CLI, Cursor, VS Code, and the Claude UI.
+install:
+  claude_code: claude mcp add --transport http re-protocol https://api.re.xyz/mcp
+  gemini_cli: gemini mcp add --transport http re-protocol https://api.re.xyz/mcp
+  codex_cli: codex mcp add re-protocol -- npx -y mcp-remote https://api.re.xyz/mcp
+tools:
+  - name: get_apy
+    description: Current APY and NAV for reUSD and reUSDe.
+    source_operation: openapi/re-openapi.yml#getApy
+  - name: get_price
+    description: Historical daily price and APY series since inception.
+    source_operation: openapi/re-openapi.yml#getPrice
+  - name: get_supply
+    description: Supply data for both tokens.
+    source_operation: openapi/re-openapi.yml#getSupply
+  - name: get_tvl
+    description: Latest values of every protocol capital/TVL metric.
+    source_operation: openapi/re-openapi.yml#getTvl
+  - name: get_tvl_history
+    description: Historical values of every TVL metric.
+    source_operation: openapi/re-openapi.yml#getTvlHistory
+  - name: get_points_leaderboard
+    description: Public Re Points leaderboard.
+    source_operation: openapi/re-openapi.yml#getPointsLeaderboard
+  - name: get_points_opportunities
+    description: Live earning opportunities with boost multipliers.
+    source_operation: openapi/re-openapi.yml#getPointsOpportunities
+  - name: get_wallet_balance
+    description: A wallet's reUSD and reUSDe holdings across chains.
+    source_operation: openapi/re-openapi.yml#getWalletBalance
+  - name: get_wallet_points
+    description: A wallet's accumulated points and leaderboard position.
+    source_operation: openapi/re-openapi.yml#getWalletPoints
+tools_note: >-
+  The docs state "all the data served by the API is also available via an MCP
+  server" without publishing an explicit tool list; the tools above are derived
+  from the documented API operations (status: candidate mapping to a published
+  server).

@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.re.xyz/products/api-reference
+description: >-
+  API lifecycle posture for the Re Protocol API, from the documented reference
+  and live probing (2026-07-21). No dedicated status page, SLA, or deprecation
+  policy was found published; the base path is unversioned.
+versioning:
+  scheme: none-documented
+  detail: No version prefix or version header; endpoints served from the unversioned base path.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation/sunset policy published.
+sla:
+  url: null
+status_page:
+  url: null
+  probe: 'https://status.re.xyz returned no response (000) on 2026-07-21'
+deprecated_operations: []

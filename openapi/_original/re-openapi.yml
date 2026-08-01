@@ -1,0 +1,389 @@
+openapi: 3.0.3
+info:
+  title: Re Protocol API
+  version: '1.0'
+  description: >-
+    Public, read-only data API for the Re Protocol — an onchain reinsurance
+    platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche)
+    yield tokens backed by real reinsurance premiums. The API serves APY/NAV,
+    price history, token supply, protocol TVL, Re Points leaderboard and earning
+    opportunities, and per-wallet balances and points. No authentication is
+    required. All data served by this API is also available via the Re Protocol
+    MCP server at https://api.re.xyz/mcp.
+  contact:
+    name: Re Protocol
+    url: https://docs.re.xyz/products/api-reference
+  x-generated-by: api-evangelist-enrichment
+  x-source: https://docs.re.xyz/products/api-reference.md
+servers:
+  - url: https://api.re.xyz
+    description: Production
+tags:
+  - name: General
+    description: Health, APY, NAV, and price series
+  - name: Supply
+    description: Token supply metrics
+  - name: TVL
+    description: Total value locked and capital metrics
+  - name: Points
+    description: Re Points leaderboard and opportunities
+  - name: Wallet
+    description: Per-wallet balances and points
+paths:
+  /health:
+    get:
+      tags: [General]
+      operationId: getHealth
+      summary: Health check
+      description: Health check endpoint. Returns the same payload as `/apy`.
+      responses:
+        '200':
+          description: Service is healthy; current APY/NAV payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApyResponse'
+  /apy:
+    get:
+      tags: [General]
+      operationId: getApy
+      summary: Current APY and NAV
+      description: Current APY and NAV for both tokens over a rolling window.
+      parameters:
+        - $ref: '#/components/parameters/Period'
+        - $ref: '#/components/parameters/Tokens'
+      responses:
+        '200':
+          description: Current APY and NAV.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApyResponse'
+  /price:
+    get:
+      tags: [General]
+      operationId: getPrice
+      summary: Historical price and APY series
+      description: Full historical daily price and APY series since inception.
+      parameters:
+        - $ref: '#/components/parameters/Period'
+        - $ref: '#/components/parameters/Tokens'
+      responses:
+        '200':
+          description: Historical daily price and APY series.
+          content:
+            application/json:
+              schema:
+                type: object
+  /supply:
+    get:
+      tags: [Supply]
+      operationId: getSupply
+      summary: Supply for both tokens
+      description: Full supply data for both reUSD and reUSDe.
+      responses:
+        '200':
+          description: Supply data for both tokens.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplyResponse'
+  /supply/{token}:
+    get:
+      tags: [Supply]
+      operationId: getSupplyForToken
+      summary: Supply for one token
+      description: Supply data for a single token (reusd or reusde, case-insensitive).
+      parameters:
+        - $ref: '#/components/parameters/TokenPath'
+      responses:
+        '200':
+          description: Supply data for one token.
+          content:
+            application/json:
+              schema:
+                type: object
+  /supply/{token}/total_supply:
+    get:
+      tags: [Supply]
+      operationId: getTokenTotalSupply
+      summary: Total supply of a token
+      description: Total supply across all chains for a token.
+      parameters:
+        - $ref: '#/components/parameters/TokenPath'
+      responses:
+        '200':
+          description: Total supply across all chains.
+          content:
+            application/json:
+              schema:
+                type: object
+  /supply/{token}/circulating:
+    get:
+      tags: [Supply]
+      operationId: getTokenCirculatingSupply
+      summary: Circulating supply of a token
+      description: Circulating supply of a token.
+      parameters:
+        - $ref: '#/components/parameters/TokenPath'
+      responses:
+        '200':
+          description: Circulating supply.
+          content:
+            application/json:
+              schema:
+                type: object
+  /tvl:
+    get:
+      tags: [TVL]
+      operationId: getTvl
+      summary: Latest values of every TVL metric
+      description: Latest values of every protocol capital/TVL metric.
+      responses:
+        '200':
+          description: Latest values of every metric.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TvlResponse'
+  /tvl/{metric}:
+    get:
+      tags: [TVL]
+      operationId: getTvlMetric
+      summary: Latest value of one TVL metric
+      description: >-
+        Latest value of one metric: reusd, reusde, total, onchain_capital,
+        offchain_capital, or premium-receivables.
+      parameters:
+        - $ref: '#/components/parameters/MetricPath'
+      responses:
+        '200':
+          description: Latest value of one metric.
+          content:
+            application/json:
+              schema:
+                type: object
+  /tvl/{metric}/history:
+    get:
+      tags: [TVL]
+      operationId: getTvlMetricHistory
+      summary: Daily history of one TVL metric
+      description: Daily history of one metric.
+      parameters:
+        - $ref: '#/components/parameters/MetricPath'
+        - $ref: '#/components/parameters/Period'
+      responses:
+        '200':
+          description: Daily history of one metric.
+          content:
+            application/json:
+              schema:
+                type: object
+  /tvl/history:
+    get:
+      tags: [TVL]
+      operationId: getTvlHistory
+      summary: Historical values of every TVL metric
+      description: Historical values of every metric.
+      responses:
+        '200':
+          description: Historical values of every metric.
+          content:
+            application/json:
+              schema:
+                type: object
+  /points/public/leaderboard:
+    get:
+      tags: [Points]
+      operationId: getPointsLeaderboard
+      summary: Public Re Points leaderboard
+      description: Public Re Points leaderboard.
+      parameters:
+        - name: limit
+          in: query
+          description: Number of rows to return (1-100).
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 100
+        - name: offset
+          in: query
+          description: Row offset for pagination.
+          schema:
+            type: integer
+            default: 0
+        - name: season
+          in: query
+          description: Points season. Defaults to current season.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Leaderboard rows.
+          content:
+            application/json:
+              schema:
+                type: object
+  /points/public/opportunities:
+    get:
+      tags: [Points]
+      operationId: getPointsOpportunities
+      summary: Live earning opportunities
+      description: Live earning opportunities with boost multipliers.
+      responses:
+        '200':
+          description: Earning opportunities.
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet/balance:
+    get:
+      tags: [Wallet]
+      operationId: getWalletBalance
+      summary: Wallet token balances
+      description: A wallet's reUSD and reUSDe holdings across chains.
+      parameters:
+        - name: address
+          in: query
+          required: true
+          description: The wallet address to query.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/Tokens'
+      responses:
+        '200':
+          description: Wallet balances across chains.
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet/points:
+    get:
+      tags: [Wallet]
+      operationId: getWalletPoints
+      summary: Wallet points and rank
+      description: A wallet's accumulated points and leaderboard position.
+      parameters:
+        - name: address
+          in: query
+          required: true
+          description: The wallet address to query.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Wallet points and rank.
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  parameters:
+    Period:
+      name: period
+      in: query
+      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
+      schema:
+        type: string
+        default: 7d
+    Tokens:
+      name: tokens
+      in: query
+      description: Which tokens to include (reUSD/reUSDe). Defaults to both.
+      schema:
+        type: string
+    TokenPath:
+      name: token
+      in: path
+      required: true
+      description: Token symbol (reusd or reusde, case-insensitive).
+      schema:
+        type: string
+        enum: [reusd, reusde]
+    MetricPath:
+      name: metric
+      in: path
+      required: true
+      description: Capital/TVL metric key.
+      schema:
+        type: string
+        enum:
+          - reusd
+          - reusde
+          - total
+          - onchain_capital
+          - offchain_capital
+          - premium-receivables
+  schemas:
+    TokenApy:
+      type: object
+      properties:
+        apy:
+          type: number
+        currentNAV:
+          type: string
+        pastNAV:
+          type: string
+        period:
+          type: string
+    ApyResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            reUSD:
+              $ref: '#/components/schemas/TokenApy'
+            reUSDe:
+              $ref: '#/components/schemas/TokenApy'
+        timestamp:
+          type: string
+          format: date-time
+    TokenSupply:
+      type: object
+      properties:
+        totalSupply:
+          type: string
+        circulating:
+          type: string
+    SupplyResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        results:
+          type: object
+          properties:
+            reUSD:
+              $ref: '#/components/schemas/TokenSupply'
+            reUSDe:
+              $ref: '#/components/schemas/TokenSupply'
+        timestamp:
+          type: string
+          format: date-time
+    MetricValue:
+      type: object
+      properties:
+        amount:
+          type: number
+        lastUpdated:
+          type: string
+          format: date-time
+        currency:
+          type: string
+    TvlResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        results:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MetricValue'
+        timestamp:
+          type: string
+          format: date-time

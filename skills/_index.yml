@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/re-openapi.yml
+skills:
+  - file: re-check-yields-and-tvl.md
+    name: Check Re Protocol yields and TVL
+    api: openapi/re-openapi.yml
+    operations: [getApy, getSupply, getTvl, getTvlHistory]
+  - file: re-wallet-holdings-and-points.md
+    name: Look up a wallet's Re holdings and points
+    api: openapi/re-openapi.yml
+    operations: [getWalletBalance, getWalletPoints, getPointsLeaderboard]
