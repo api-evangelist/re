@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Re Protocol General TVL API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TVL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Latest values of every TVL metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/tvl"
+          },
+          "docs": "Latest values of every protocol capital/TVL metric."
+        },
+        {
+          "info": {
+            "name": "Latest value of one TVL metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/tvl/:metric",
+            "params": [
+              {
+                "name": "metric",
+                "value": "",
+                "type": "path",
+                "description": "Capital/TVL metric key."
+              }
+            ]
+          },
+          "docs": "Latest value of one metric: reusd, reusde, total, onchain_capital, offchain_capital, or premium-receivables."
+        },
+        {
+          "info": {
+            "name": "Daily history of one TVL metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/tvl/:metric/history",
+            "params": [
+              {
+                "name": "metric",
+                "value": "",
+                "type": "path",
+                "description": "Capital/TVL metric key."
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price."
+              }
+            ]
+          },
+          "docs": "Daily history of one metric."
+        },
+        {
+          "info": {
+            "name": "Historical values of every TVL metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/tvl/history"
+          },
+          "docs": "Historical values of every metric."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,210 @@
+{
+  "item": [
+    {
+      "id": "1a8e3741-7d97-4555-b95e-1afc34ded451",
+      "name": "Wallet",
+      "description": {
+        "content": "Per-wallet balances and points",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df89f6cd-cc07-4ccf-a5b1-bb5c639be695",
+          "name": "Wallet token balances",
+          "request": {
+            "name": "Wallet token balances",
+            "description": {
+              "content": "A wallet's reUSD and reUSDe holdings across chains.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wallet",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) The wallet address to query."
+                },
+                {
+                  "disabled": false,
+                  "key": "tokens",
+                  "value": "<string>",
+                  "description": "Which tokens to include (reUSD/reUSDe). Defaults to both."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49a35c84-d8a0-4a00-a661-672558e75465",
+              "name": "Wallet balances across chains.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallet",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokens",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c90c36fb-049c-493d-98bb-5842ebae290b",
+          "name": "Wallet points and rank",
+          "request": {
+            "name": "Wallet points and rank",
+            "description": {
+              "content": "A wallet's accumulated points and leaderboard position.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wallet",
+                "points"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) The wallet address to query."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd36fc38-8ea4-4bb7-808a-2ffb7dcdc554",
+              "name": "Wallet points and rank.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallet",
+                    "points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.re.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0adedc21-6588-4d03-b1be-83a7100a4a79",
+    "name": "Re Protocol General Wallet API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.\n\nContact Support:\n Name: Re Protocol",
+      "type": "text/plain"
+    }
+  }
+}

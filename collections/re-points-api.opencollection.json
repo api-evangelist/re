@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Re Protocol General Points API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Points",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Public Re Points leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/points/public/leaderboard",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to return (1-100)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Row offset for pagination."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Points season. Defaults to current season."
+              }
+            ]
+          },
+          "docs": "Public Re Points leaderboard."
+        },
+        {
+          "info": {
+            "name": "Live earning opportunities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/points/public/opportunities"
+          },
+          "docs": "Live earning opportunities with boost multipliers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

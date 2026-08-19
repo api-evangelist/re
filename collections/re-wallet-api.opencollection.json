@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Re Protocol General Wallet API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wallet token balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/wallet/balance",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The wallet address to query."
+              },
+              {
+                "name": "tokens",
+                "value": "",
+                "type": "query",
+                "description": "Which tokens to include (reUSD/reUSDe). Defaults to both."
+              }
+            ]
+          },
+          "docs": "A wallet's reUSD and reUSDe holdings across chains."
+        },
+        {
+          "info": {
+            "name": "Wallet points and rank",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/wallet/points",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The wallet address to query."
+              }
+            ]
+          },
+          "docs": "A wallet's accumulated points and leaderboard position."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

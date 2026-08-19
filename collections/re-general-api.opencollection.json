@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Re Protocol General API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/health"
+          },
+          "docs": "Health check endpoint. Returns the same payload as `/apy`."
+        },
+        {
+          "info": {
+            "name": "Current APY and NAV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/apy",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price."
+              },
+              {
+                "name": "tokens",
+                "value": "",
+                "type": "query",
+                "description": "Which tokens to include (reUSD/reUSDe). Defaults to both."
+              }
+            ]
+          },
+          "docs": "Current APY and NAV for both tokens over a rolling window."
+        },
+        {
+          "info": {
+            "name": "Historical price and APY series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/price",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price."
+              },
+              {
+                "name": "tokens",
+                "value": "",
+                "type": "query",
+                "description": "Which tokens to include (reUSD/reUSDe). Defaults to both."
+              }
+            ]
+          },
+          "docs": "Full historical daily price and APY series since inception."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

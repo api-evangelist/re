@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "eaf62540-ad9c-4edb-adac-60275b93a226",
+      "name": "General",
+      "description": {
+        "content": "Health, APY, NAV, and price series",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7046fc4f-e854-42b5-9374-0790663f4336",
+          "name": "Health check",
+          "request": {
+            "name": "Health check",
+            "description": {
+              "content": "Health check endpoint. Returns the same payload as `/apy`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68fbd242-ceac-49f0-a9a8-5feeadc13399",
+              "name": "Service is healthy; current APY/NAV payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"reUSD\": {\n      \"apy\": 4633.727592077247,\n      \"currentNAV\": \"string\",\n      \"pastNAV\": \"string\",\n      \"period\": \"string\"\n    },\n    \"reUSDe\": {\n      \"apy\": 3108.7952512965444,\n      \"currentNAV\": \"string\",\n      \"pastNAV\": \"string\",\n      \"period\": \"string\"\n    }\n  },\n  \"timestamp\": \"2010-02-05T10:53:55.610Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d23ca797-f757-447f-9cd9-390dcef6dec5",
+          "name": "Current APY and NAV",
+          "request": {
+            "name": "Current APY and NAV",
+            "description": {
+              "content": "Current APY and NAV for both tokens over a rolling window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "7d",
+                  "description": "Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price."
+                },
+                {
+                  "disabled": false,
+                  "key": "tokens",
+                  "value": "<string>",
+                  "description": "Which tokens to include (reUSD/reUSDe). Defaults to both."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e719bf9d-2bff-44b2-a3f5-709732c3d616",
+              "name": "Current APY and NAV.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "7d"
+                    },
+                    {
+                      "key": "tokens",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"reUSD\": {\n      \"apy\": 4633.727592077247,\n      \"currentNAV\": \"string\",\n      \"pastNAV\": \"string\",\n      \"period\": \"string\"\n    },\n    \"reUSDe\": {\n      \"apy\": 3108.7952512965444,\n      \"currentNAV\": \"string\",\n      \"pastNAV\": \"string\",\n      \"period\": \"string\"\n    }\n  },\n  \"timestamp\": \"2010-02-05T10:53:55.610Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b7429c1-eeb6-47dd-a99c-ca33a52b90c3",
+          "name": "Historical price and APY series",
+          "request": {
+            "name": "Historical price and APY series",
+            "description": {
+              "content": "Full historical daily price and APY series since inception.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "7d",
+                  "description": "Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price."
+                },
+                {
+                  "disabled": false,
+                  "key": "tokens",
+                  "value": "<string>",
+                  "description": "Which tokens to include (reUSD/reUSDe). Defaults to both."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f982ce38-0174-4a33-a6bb-57efe4ecbe53",
+              "name": "Historical daily price and APY series.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "7d"
+                    },
+                    {
+                      "key": "tokens",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.re.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "de8404f9-0bdf-4692-9a6a-953c6bde56e2",
+    "name": "Re Protocol General API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.\n\nContact Support:\n Name: Re Protocol",
+      "type": "text/plain"
+    }
+  }
+}

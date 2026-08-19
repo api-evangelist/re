@@ -1,0 +1,364 @@
+{
+  "item": [
+    {
+      "id": "2e4b8140-e033-47fb-9105-d5bc47591c75",
+      "name": "TVL",
+      "description": {
+        "content": "Total value locked and capital metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b72b8187-fd87-47e5-b783-7a7b2622dbfb",
+          "name": "Latest values of every TVL metric",
+          "request": {
+            "name": "Latest values of every TVL metric",
+            "description": {
+              "content": "Latest values of every protocol capital/TVL metric.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tvl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4a2c8e9-904f-4c73-9d8a-bfb186fd90ae",
+              "name": "Latest values of every metric.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tvl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"results\": {\n    \"key_0\": {\n      \"amount\": 1166.3451732737794,\n      \"lastUpdated\": \"1967-08-21T01:56:17.743Z\",\n      \"currency\": \"string\"\n    },\n    \"key_1\": {\n      \"amount\": 4636.793911786422,\n      \"lastUpdated\": \"1976-02-24T11:38:27.501Z\",\n      \"currency\": \"string\"\n    },\n    \"key_2\": {\n      \"amount\": 8857.370103202438,\n      \"lastUpdated\": \"2000-01-30T08:47:43.105Z\",\n      \"currency\": \"string\"\n    }\n  },\n  \"timestamp\": \"1951-07-21T06:33:27.632Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5a3b975-bf9e-4135-bb5e-1a1eb1ad58eb",
+          "name": "Latest value of one TVL metric",
+          "request": {
+            "name": "Latest value of one TVL metric",
+            "description": {
+              "content": "Latest value of one metric: reusd, reusde, total, onchain_capital, offchain_capital, or premium-receivables.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tvl",
+                ":metric"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "metric",
+                  "description": "(Required) Capital/TVL metric key."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6e37c2c-5501-41a7-a99b-126fd7f1b008",
+              "name": "Latest value of one metric.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tvl",
+                    ":metric"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metric",
+                      "description": "(Required) Capital/TVL metric key."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb9249ff-e7a4-485d-8b7a-2ef36252d770",
+          "name": "Daily history of one TVL metric",
+          "request": {
+            "name": "Daily history of one TVL metric",
+            "description": {
+              "content": "Daily history of one metric.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tvl",
+                ":metric",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "7d",
+                  "description": "Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "metric",
+                  "description": "(Required) Capital/TVL metric key."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77efcd4b-7a58-4182-a5f8-f1e174075b5f",
+              "name": "Daily history of one metric.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tvl",
+                    ":metric",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "7d"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metric",
+                      "description": "(Required) Capital/TVL metric key."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "327bce05-9a4e-4e6a-8349-87fc6be90cee",
+          "name": "Historical values of every TVL metric",
+          "request": {
+            "name": "Historical values of every TVL metric",
+            "description": {
+              "content": "Historical values of every metric.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tvl",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48f300cd-76ed-4e2f-a743-7d883041c91d",
+              "name": "Historical values of every metric.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tvl",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.re.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f950fd26-3fd4-4700-8527-60f243df7883",
+    "name": "Re Protocol General TVL API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.\n\nContact Support:\n Name: Re Protocol",
+      "type": "text/plain"
+    }
+  }
+}

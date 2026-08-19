@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Re Protocol General Supply API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Supply",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Supply for both tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/supply"
+          },
+          "docs": "Full supply data for both reUSD and reUSDe."
+        },
+        {
+          "info": {
+            "name": "Supply for one token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/supply/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "Token symbol (reusd or reusde, case-insensitive)."
+              }
+            ]
+          },
+          "docs": "Supply data for a single token (reusd or reusde, case-insensitive)."
+        },
+        {
+          "info": {
+            "name": "Total supply of a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/supply/:token/total_supply",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "Token symbol (reusd or reusde, case-insensitive)."
+              }
+            ]
+          },
+          "docs": "Total supply across all chains for a token."
+        },
+        {
+          "info": {
+            "name": "Circulating supply of a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.re.xyz/supply/:token/circulating",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "Token symbol (reusd or reusde, case-insensitive)."
+              }
+            ]
+          },
+          "docs": "Circulating supply of a token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

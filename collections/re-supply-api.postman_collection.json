@@ -1,0 +1,370 @@
+{
+  "item": [
+    {
+      "id": "5308fa45-d5f1-48d4-b034-e3ed3c4fc2fa",
+      "name": "Supply",
+      "description": {
+        "content": "Token supply metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c379d9fe-9bf8-40e8-9008-dc97e2e1d0c7",
+          "name": "Supply for both tokens",
+          "request": {
+            "name": "Supply for both tokens",
+            "description": {
+              "content": "Full supply data for both reUSD and reUSDe.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "supply"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2aff19d-b3a5-404c-ac65-aab54ee9761a",
+              "name": "Supply data for both tokens.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "supply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"results\": {\n    \"reUSD\": {\n      \"totalSupply\": \"string\",\n      \"circulating\": \"string\"\n    },\n    \"reUSDe\": {\n      \"totalSupply\": \"string\",\n      \"circulating\": \"string\"\n    }\n  },\n  \"timestamp\": \"1988-10-23T07:51:43.532Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f174764-5ba4-4030-aba2-3ce3e12acc16",
+          "name": "Supply for one token",
+          "request": {
+            "name": "Supply for one token",
+            "description": {
+              "content": "Supply data for a single token (reusd or reusde, case-insensitive).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "supply",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) Token symbol (reusd or reusde, case-insensitive)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d21d3e7d-75a0-45c4-a944-05cfc808cd14",
+              "name": "Supply data for one token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "supply",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Token symbol (reusd or reusde, case-insensitive)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d622d882-6cc0-4c43-a360-1f7e8aaf9e73",
+          "name": "Total supply of a token",
+          "request": {
+            "name": "Total supply of a token",
+            "description": {
+              "content": "Total supply across all chains for a token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "supply",
+                ":token",
+                "total_supply"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) Token symbol (reusd or reusde, case-insensitive)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1a92472-ddcb-4e69-9b21-3493e01aef0a",
+              "name": "Total supply across all chains.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "supply",
+                    ":token",
+                    "total_supply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Token symbol (reusd or reusde, case-insensitive)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f5a91f1-d807-4a8d-b14c-1b4213db1baa",
+          "name": "Circulating supply of a token",
+          "request": {
+            "name": "Circulating supply of a token",
+            "description": {
+              "content": "Circulating supply of a token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "supply",
+                ":token",
+                "circulating"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) Token symbol (reusd or reusde, case-insensitive)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df9e0862-b612-4abe-b8c7-e6d92ed80bdb",
+              "name": "Circulating supply.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "supply",
+                    ":token",
+                    "circulating"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) Token symbol (reusd or reusde, case-insensitive)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.re.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "123d9bb7-e9f4-4746-834a-5d99889c3252",
+    "name": "Re Protocol General Supply API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.\n\nContact Support:\n Name: Re Protocol",
+      "type": "text/plain"
+    }
+  }
+}
