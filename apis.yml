@@ -44,6 +44,17 @@ tags:
 - DeFi
 - Blockchain
 - Real World Assets
+- Stablecoins
+- Yield
+- Onchain
+tags_raw:
+- Company
+- Fintech
+- Reinsurance
+- Insurance
+- DeFi
+- Blockchain
+- Real World Assets
 - Stablecoin
 - Yield
 - Onchain
@@ -53,7 +64,8 @@ apis:
   description: Health, APY, NAV, and price series
   humanURL: https://docs.re.xyz/products/api-reference
   baseURL: https://api.re.xyz
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
@@ -110,6 +122,8 @@ apis:
   humanURL: https://docs.re.xyz/products/api-reference
   baseURL: https://api.re.xyz
   tags:
+  - Wallets
+  tags_raw:
   - Wallet
   properties:
   - type: OpenAPI
