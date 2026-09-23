@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Re Protocol General TVL API
+  title: Re Protocol TVL API
   version: '1.0'
   description: Public, read-only data API for the Re Protocol — an onchain reinsurance platform issuing the reUSD (senior tranche) and reUSDe (mezzanine tranche) yield tokens backed by real reinsurance premiums. The API serves APY/NAV, price history, token supply, protocol TVL, Re Points leaderboard and earning opportunities, and per-wallet balances and points. No authentication is required. All data served by this API is also available via the Re Protocol MCP server at https://api.re.xyz/mcp.
   contact:
@@ -100,16 +100,6 @@ components:
         type: string
         default: 7d
   schemas:
-    MetricValue:
-      type: object
-      properties:
-        amount:
-          type: number
-        lastUpdated:
-          type: string
-          format: date-time
-        currency:
-          type: string
     TvlResponse:
       type: object
       properties:
@@ -122,3 +112,13 @@ components:
         timestamp:
           type: string
           format: date-time
+    MetricValue:
+      type: object
+      properties:
+        amount:
+          type: number
+        lastUpdated:
+          type: string
+          format: date-time
+        currency:
+          type: string
