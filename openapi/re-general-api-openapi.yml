@@ -64,18 +64,21 @@ paths:
               schema:
                 type: object
 components:
+  parameters:
+    Tokens:
+      name: tokens
+      in: query
+      description: Which tokens to include (reUSD/reUSDe). Defaults to both.
+      schema:
+        type: string
+    Period:
+      name: period
+      in: query
+      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
+      schema:
+        type: string
+        default: 7d
   schemas:
-    TokenApy:
-      type: object
-      properties:
-        apy:
-          type: number
-        currentNAV:
-          type: string
-        pastNAV:
-          type: string
-        period:
-          type: string
     ApyResponse:
       type: object
       properties:
@@ -91,17 +94,14 @@ components:
         timestamp:
           type: string
           format: date-time
-  parameters:
-    Period:
-      name: period
-      in: query
-      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
-      schema:
-        type: string
-        default: 7d
-    Tokens:
-      name: tokens
-      in: query
-      description: Which tokens to include (reUSD/reUSDe). Defaults to both.
-      schema:
-        type: string
+    TokenApy:
+      type: object
+      properties:
+        apy:
+          type: number
+        currentNAV:
+          type: string
+        pastNAV:
+          type: string
+        period:
+          type: string

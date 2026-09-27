@@ -78,6 +78,13 @@ paths:
                 type: object
 components:
   parameters:
+    Period:
+      name: period
+      in: query
+      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
+      schema:
+        type: string
+        default: 7d
     MetricPath:
       name: metric
       in: path
@@ -92,14 +99,17 @@ components:
         - onchain_capital
         - offchain_capital
         - premium-receivables
-    Period:
-      name: period
-      in: query
-      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
-      schema:
-        type: string
-        default: 7d
   schemas:
+    MetricValue:
+      type: object
+      properties:
+        amount:
+          type: number
+        lastUpdated:
+          type: string
+          format: date-time
+        currency:
+          type: string
     TvlResponse:
       type: object
       properties:
@@ -112,13 +122,3 @@ components:
         timestamp:
           type: string
           format: date-time
-    MetricValue:
-      type: object
-      properties:
-        amount:
-          type: number
-        lastUpdated:
-          type: string
-          format: date-time
-        currency:
-          type: string
