@@ -65,6 +65,17 @@ paths:
                 type: object
 components:
   schemas:
+    TokenApy:
+      type: object
+      properties:
+        apy:
+          type: number
+        currentNAV:
+          type: string
+        pastNAV:
+          type: string
+        period:
+          type: string
     ApyResponse:
       type: object
       properties:
@@ -80,17 +91,6 @@ components:
         timestamp:
           type: string
           format: date-time
-    TokenApy:
-      type: object
-      properties:
-        apy:
-          type: number
-        currentNAV:
-          type: string
-        pastNAV:
-          type: string
-        period:
-          type: string
   parameters:
     Tokens:
       name: tokens
