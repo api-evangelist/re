@@ -77,6 +77,28 @@ paths:
               schema:
                 type: object
 components:
+  parameters:
+    MetricPath:
+      name: metric
+      in: path
+      required: true
+      description: Capital/TVL metric key.
+      schema:
+        type: string
+        enum:
+        - reusd
+        - reusde
+        - total
+        - onchain_capital
+        - offchain_capital
+        - premium-receivables
+    Period:
+      name: period
+      in: query
+      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
+      schema:
+        type: string
+        default: 7d
   schemas:
     TvlResponse:
       type: object
@@ -100,25 +122,3 @@ components:
           format: date-time
         currency:
           type: string
-  parameters:
-    MetricPath:
-      name: metric
-      in: path
-      required: true
-      description: Capital/TVL metric key.
-      schema:
-        type: string
-        enum:
-        - reusd
-        - reusde
-        - total
-        - onchain_capital
-        - offchain_capital
-        - premium-receivables
-    Period:
-      name: period
-      in: query
-      description: Rolling window, 1d-30d or 1M-12M. Default 7d for /apy; full range for /price.
-      schema:
-        type: string
-        default: 7d

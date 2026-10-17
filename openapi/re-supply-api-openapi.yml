@@ -79,13 +79,6 @@ paths:
                 type: object
 components:
   schemas:
-    TokenSupply:
-      type: object
-      properties:
-        totalSupply:
-          type: string
-        circulating:
-          type: string
     SupplyResponse:
       type: object
       properties:
@@ -101,6 +94,13 @@ components:
         timestamp:
           type: string
           format: date-time
+    TokenSupply:
+      type: object
+      properties:
+        totalSupply:
+          type: string
+        circulating:
+          type: string
   parameters:
     TokenPath:
       name: token
