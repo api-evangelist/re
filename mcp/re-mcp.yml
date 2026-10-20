@@ -16,32 +16,62 @@ install:
   codex_cli: codex mcp add re-protocol -- npx -y mcp-remote https://api.re.xyz/mcp
 tools:
 - name: get_apy
-  description: Current APY and NAV for reUSD and reUSDe.
+  description: Current annualized yield (APY) for Re's yield-bearing stablecoins reUSD and reUSDe, computed
+    from NAV growth over a lookback window (default 7 days). Returns the APY percentage plus current and
+    past NAV per token.
   source_operation: openapi/re-openapi.yml#getApy
-- name: get_price
-  description: Historical daily price and APY series since inception.
-  source_operation: openapi/re-openapi.yml#getPrice
+- name: get_price_history
+  description: Daily token price (NAV) history for reUSD and reUSDe, each day with its price and trailing
+    7-day APY. By default returns the full history; period limits how far back it goes.
 - name: get_supply
-  description: Supply data for both tokens.
+  description: Total and circulating on-chain supply of reUSD and reUSDe, as full-precision decimal strings.
+    Omit token to get both.
   source_operation: openapi/re-openapi.yml#getSupply
 - name: get_tvl
-  description: Latest values of every protocol capital/TVL metric.
+  description: 'Re Protocol TVL metrics in USD: per-product TVL (reusd, reusde), protocol totals (total,
+    onchain_capital, offchain_capital), and premium-receivables (outstanding insurance premiums owed to
+    Re, updated quarterly). Omit metric to get all of them.'
   source_operation: openapi/re-openapi.yml#getTvl
 - name: get_tvl_history
-  description: Historical values of every TVL metric.
+  description: 'Daily history of Re Protocol TVL metrics in USD: per-product TVL (reusd, reusde), protocol
+    totals (total, onchain_capital, offchain_capital), and premium-receivables. By default returns the
+    full history; period limits how far back it goes. Omit metric to get all of them.'
   source_operation: openapi/re-openapi.yml#getTvlHistory
-- name: get_points_leaderboard
-  description: Public Re Points leaderboard.
-  source_operation: openapi/re-openapi.yml#getPointsLeaderboard
 - name: get_points_opportunities
-  description: Live earning opportunities with boost multipliers.
+  description: 'Live Re Points earning opportunities: every strategy (Curve/Pendle LPs, lending collateral,
+    direct holdings, ...) that earned points on the latest day, with its boost multiplier, daily points,
+    TVL, holders and start/end dates. Also includes Pendle PT holdings (0 multiplier, TVL only) and, under
+    `ended`, strategies whose points program has ended.'
   source_operation: openapi/re-openapi.yml#getPointsOpportunities
+- name: search_docs
+  description: Search the Re Protocol documentation (docs.re.xyz) for concepts, product guides, FAQs,
+    tokenomics, points mechanics and how-tos. Returns relevant excerpts with page links. Use get_doc_page
+    to read a full page.
+- name: get_doc_page
+  description: Fetch the full markdown content of a Re Protocol documentation page by URL. Use list_docs
+    or search_docs to find page URLs.
+- name: list_docs
+  description: 'Table of contents of the Re Protocol documentation: every page with its title, URL and
+    short description. Useful for browsing before fetching a specific page.'
 - name: get_wallet_balance
-  description: A wallet's reUSD and reUSDe holdings across chains.
+  description: A wallet's direct reUSD/reUSDe holdings across all chains (Ethereum, BNB Chain, Arbitrum,
+    Base, ...), valued in USD at current NAV. Returns per-token and per-chain balances plus a combined
+    USD total. Direct token holdings only — LP and derivative positions are not included.
   source_operation: openapi/re-openapi.yml#getWalletBalance
 - name: get_wallet_points
-  description: A wallet's accumulated points and leaderboard position.
+  description: 'A wallet''s accumulated Re Points for a season: cumulative points, leaderboard rank, share
+    of total points, and the last day points were earned. Unknown wallets return zero points.'
   source_operation: openapi/re-openapi.yml#getWalletPoints
+- name: list_blog_posts
+  description: 'Recent posts from the Re Protocol blog (re.xyz/insights), newest first: product updates,
+    ecosystem news and press announcements. Filter by tag ''announcements'' for press releases. Use get_blog_post
+    to read a full post.'
+- name: get_blog_post
+  description: Full content of a Re Protocol blog post by slug, as plain text, with title, authors, tags,
+    dates and its canonical re.xyz URL for citation.
+- name: get_leaderboard
+  description: 'Public Re Points leaderboard: top wallets (truncated for privacy) ranked by cumulative
+    points, plus total points awarded.'
 tools_note: 'The docs state "all the data served by the API is also available via an MCP server" without
   publishing an explicit tool list; the tools above are derived from the documented API operations (status:
   candidate mapping to a published server).'
@@ -78,3 +108,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 14
