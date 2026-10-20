@@ -1,0 +1,44 @@
+edges:
+- partner_name: MiCA (EU) crypto-asset white papers
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv
+  category: stablecoin / token issuer register
+  contract_reference:
+    register: 'ESMA interim MiCA register: white papers for other crypto-assets (OTHER.csv)'
+    standard: MiCA (Regulation (EU) 2023/1114)
+    spec_file: null
+    role: crypto-asset-white-paper-offeror
+    registered_name: Resilience Core Ltd.
+    register_id: 2549004WYGE5MQ16JH36
+    competent_authority: Central Bank of Ireland (CBI)
+    home_member_state: IE
+    matched_domain: re.xyz
+    matched_by: domain
+    white_papers:
+    - white_paper: https://re.xyz/docs/re-iXBRL-report.html
+      notified: 26/06/2026
+      dti: WJPPZB1R0
+    signal_note: 'participation only: a MiCA notification / authorisation; white papers and tokens are context,
+      never counted'
+    detected_by: sweep-stablecoins-tokenization.py
+    detected: '2026-10-20'
+  detected_by: sweep-stablecoins-tokenization.py
+  first_seen: '2026-10-20'
+generated: '2026-10-20'
+method: searched
+source:
+- https://www.esma.europa.eu/sites/default/files/2024-12/EMTWP.csv
+- https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv
+- https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv
+- https://www.hkma.gov.hk/eng/regulatory-resources/registers/register-of-licensed-stablecoin-issuers/
+- https://stablecoins.llama.fi/stablecoins
+checked:
+- https://stablecoins.llama.fi/stablecoins
+- https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv
+- https://www.esma.europa.eu/sites/default/files/2024-12/EMTWP.csv
+- https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv
+- https://www.hkma.gov.hk/eng/regulatory-resources/registers/register-of-licensed-stablecoin-issuers/
