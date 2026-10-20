@@ -1,0 +1,352 @@
+{
+  "endpoint": "https://api.re.xyz/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "re-protocol",
+    "version": "1.0.0",
+    "icons": [
+      {
+        "src": "https://press.re.xyz/brand/Token-Re.svg",
+        "mimeType": "image/svg+xml",
+        "sizes": [
+          "any"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "get_apy",
+        "title": "Get APY",
+        "description": "Current annualized yield (APY) for Re's yield-bearing stablecoins reUSD and reUSDe, computed from NAV growth over a lookback window (default 7 days). Returns the APY percentage plus current and past NAV per token.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "period": {
+              "description": "Lookback window: 1-30 days (e.g. 7d) or 1-12 months (e.g. 3M)",
+              "type": "string",
+              "pattern": "^\\d{1,2}(d|M)$"
+            },
+            "tokens": {
+              "description": "Comma-separated token filter: reUSD, reUSDe or reUSD,reUSDe (default: both)",
+              "type": "string"
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_price_history",
+        "title": "Get price history",
+        "description": "Daily token price (NAV) history for reUSD and reUSDe, each day with its price and trailing 7-day APY. By default returns the full history; period limits how far back it goes.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "period": {
+              "description": "Lookback window: 1-30 days (e.g. 7d) or 1-12 months (e.g. 3M)",
+              "type": "string",
+              "pattern": "^\\d{1,2}(d|M)$"
+            },
+            "tokens": {
+              "description": "Comma-separated token filter: reUSD, reUSDe or reUSD,reUSDe (default: both)",
+              "type": "string"
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_supply",
+        "title": "Get token supply",
+        "description": "Total and circulating on-chain supply of reUSD and reUSDe, as full-precision decimal strings. Omit token to get both.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "token": {
+              "description": "Token to query (default: both)",
+              "type": "string",
+              "enum": [
+                "reUSD",
+                "reUSDe"
+              ]
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_tvl",
+        "title": "Get TVL",
+        "description": "Re Protocol TVL metrics in USD: per-product TVL (reusd, reusde), protocol totals (total, onchain_capital, offchain_capital), and premium-receivables (outstanding insurance premiums owed to Re, updated quarterly). Omit metric to get all of them.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "metric": {
+              "description": "Metric to query (default: all)",
+              "type": "string",
+              "enum": [
+                "reusd",
+                "reusde",
+                "total",
+                "onchain_capital",
+                "offchain_capital",
+                "premium-receivables"
+              ]
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_tvl_history",
+        "title": "Get TVL history",
+        "description": "Daily history of Re Protocol TVL metrics in USD: per-product TVL (reusd, reusde), protocol totals (total, onchain_capital, offchain_capital), and premium-receivables. By default returns the full history; period limits how far back it goes. Omit metric to get all of them.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "metric": {
+              "description": "Metric to query (default: all)",
+              "type": "string",
+              "enum": [
+                "reusd",
+                "reusde",
+                "total",
+                "onchain_capital",
+                "offchain_capital",
+                "premium-receivables"
+              ]
+            },
+            "period": {
+              "description": "Lookback window: 1-30 days (e.g. 7d) or 1-12 months (e.g. 3M)",
+              "type": "string",
+              "pattern": "^\\d{1,2}(d|M)$"
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_points_opportunities",
+        "title": "Get points opportunities",
+        "description": "Live Re Points earning opportunities: every strategy (Curve/Pendle LPs, lending collateral, direct holdings, ...) that earned points on the latest day, with its boost multiplier, daily points, TVL, holders and start/end dates. Also includes Pendle PT holdings (0 multiplier, TVL only) and, under `ended`, strategies whose points program has ended.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "season": {
+              "description": "Points season, e.g. 1 or 2 (default: current season)",
+              "type": "string"
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "search_docs",
+        "title": "Search Re docs",
+        "description": "Search the Re Protocol documentation (docs.re.xyz) for concepts, product guides, FAQs, tokenomics, points mechanics and how-tos. Returns relevant excerpts with page links. Use get_doc_page to read a full page.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Natural-language search query, e.g. 'how does the reUSDe redemption queue work'"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_doc_page",
+        "title": "Get docs page",
+        "description": "Fetch the full markdown content of a Re Protocol documentation page by URL. Use list_docs or search_docs to find page URLs.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Docs page URL (e.g. https://docs.re.xyz/getting-started-with-re/faq) or site-relative path (/getting-started-with-re/faq)"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "list_docs",
+        "title": "List docs pages",
+        "description": "Table of contents of the Re Protocol documentation: every page with its title, URL and short description. Useful for browsing before fetching a specific page.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_wallet_balance",
+        "title": "Get wallet balance",
+        "description": "A wallet's direct reUSD/reUSDe holdings across all chains (Ethereum, BNB Chain, Arbitrum, Base, ...), valued in USD at current NAV. Returns per-token and per-chain balances plus a combined USD total. Direct token holdings only — LP and derivative positions are not included.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "description": "Wallet address (0x-prefixed, 40 hex chars)"
+            },
+            "token": {
+              "description": "Token to query (default: both)",
+              "type": "string",
+              "enum": [
+                "reUSD",
+                "reUSDe"
+              ]
+            }
+          },
+          "required": [
+            "address"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_wallet_points",
+        "title": "Get wallet points",
+        "description": "A wallet's accumulated Re Points for a season: cumulative points, leaderboard rank, share of total points, and the last day points were earned. Unknown wallets return zero points.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "description": "Wallet address (0x-prefixed, 40 hex chars)"
+            },
+            "season": {
+              "description": "Points season, e.g. 1 or 2 (default: current season)",
+              "type": "string"
+            }
+          },
+          "required": [
+            "address"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "list_blog_posts",
+        "title": "List blog posts",
+        "description": "Recent posts from the Re Protocol blog (re.xyz/insights), newest first: product updates, ecosystem news and press announcements. Filter by tag 'announcements' for press releases. Use get_blog_post to read a full post.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "tag": {
+              "description": "Filter by tag slug, e.g. announcements",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Posts per page (default 15)",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            },
+            "page": {
+              "description": "Page number (default 1)",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_blog_post",
+        "title": "Get blog post",
+        "description": "Full content of a Re Protocol blog post by slug, as plain text, with title, authors, tags, dates and its canonical re.xyz URL for citation.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "description": "Post slug, as returned by list_blog_posts"
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_leaderboard",
+        "title": "Get points leaderboard",
+        "description": "Public Re Points leaderboard: top wallets (truncated for privacy) ranked by cumulative points, plus total points awarded.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "description": "Rows to return (default 100)",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "offset": {
+              "description": "Pagination offset",
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      }
+    ]
+  }
+}
